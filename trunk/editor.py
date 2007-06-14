@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Arquivo editor.py
 
@@ -100,18 +101,13 @@ class Editor:
         # componentes não conseguem conversar entre si!!!
         # trazer o buffer da interface
         self.__render = htmlrender.HTMLRender(self.__formats)
-        
-        
         interface = tela.Tela(self, self.__render)
         self.__buffer = interface.get_buffer()
         self.__view = interface.get_view()
-        
                 
         # Iniciando tags
         #for tag in self.__formats:
         #    self.__buffer.create_tag(tag, **self.__formats[tag])
-        
-        interface.run()
         
         #######################################################################
         # definições trazidas do arquivo "htmlrender.py"
@@ -119,7 +115,6 @@ class Editor:
         
     def set_text(self, txt):
         self.feed(txt)
-
 
     def handle_starttag(self, tag, attr):
         # Se a tag deve ser ignorada, nada deve ser feito. 
@@ -384,11 +379,11 @@ class Editor:
         print "Método: Editor.fechar_programa(self)"
         # essa fun��o � necess�ria? acho que n�o...
     
+def main():
+    editor = Editor()
+    try: editor.abrir_arquivo(sys.argv[1])
+    except: pass
+    gtk.main()
 
 if __name__ == "__main__":
-    editor = Editor()
-    #consertar!!!!!
-    print 'argumentos:', sys.argv[0], sys.argv[1]
-    if sys.argv != None:
-        editor.abrir_arquivo(sys.argv[1])
-    
+    main()

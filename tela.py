@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Arquivo tela.py
 # Contém as declarações do componente Tela
@@ -386,14 +387,13 @@ class Tela:
             
             #d = dialogo.outrotipo()
         retorno = d.run()
-        #print retorno
+        print retorno
         d.destroy()
         return retorno
         
 def main():
+    Tela()
     gtk.main()
-    return 0       
 
 if __name__ == "__main__":
-    Tela()
     main()
